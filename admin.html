@@ -3,115 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bezier Studio — Painel Admin</title>
+<title>Bezier Studio - Painel Admin</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --black:#080808;--white:#f5f2ee;--gold:#c9a84c;--gold-light:#e8c97a;
   --border:#2a2a2a;--gray:#888;--gray2:#444;
-  --green:#27c93f;--red:#ff5f56;--blue:#2563eb;--purple:#7c3aed;
+  --green:#27c93f;--red:#ff5f56;
 }
 body{background:var(--black);color:var(--white);font-family:'Outfit',sans-serif;font-weight:300;min-height:100vh;}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.6;}
 
 /* LOGIN */
-.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1rem;position:relative;z-index:1;}
-.login-card{background:#111;border:0.5px solid var(--border);border-radius:16px;padding:2.5rem 2rem;width:100%;max-width:360px;box-shadow:0 40px 80px rgba(0,0,0,0.6);}
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1rem;}
+.login-card{background:#111;border:1px solid var(--border);border-radius:16px;padding:2.5rem 2rem;width:100%;max-width:360px;box-shadow:0 40px 80px rgba(0,0,0,0.6);}
 .login-logo{text-align:center;margin-bottom:2rem;}
-.login-logo-icon{font-size:32px;margin-bottom:10px;filter:drop-shadow(0 0 16px #c9a84c44);}
+.login-logo-icon{font-size:32px;margin-bottom:10px;}
 .login-logo h1{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;letter-spacing:0.12em;}
 .login-logo h1 span{color:var(--gold);}
 .login-logo p{font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gray);margin-top:4px;}
 .field-label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);display:block;margin-bottom:7px;}
-.field-input{width:100%;background:#1a1a1a;border:0.5px solid var(--border);border-radius:8px;padding:12px 14px;font-size:14px;color:var(--white);font-family:inherit;outline:none;transition:border 0.2s;margin-bottom:14px;}
+.field-input{width:100%;background:#1a1a1a;border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:14px;color:var(--white);font-family:inherit;outline:none;transition:border 0.2s;margin-bottom:14px;}
 .field-input:focus{border-color:var(--gold);}
 .btn-login{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--black);border:none;border-radius:8px;padding:13px;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:all 0.2s;}
-.btn-login:hover{transform:translateY(-1px);box-shadow:0 8px 24px #c9a84c33;}
-.login-err{display:none;font-size:12px;color:#f09595;text-align:center;margin-bottom:12px;padding:8px;background:#50131366;border-radius:6px;}
+.btn-login:hover{transform:translateY(-1px);}
+.login-err{display:none;font-size:12px;color:#f09595;text-align:center;margin-bottom:12px;padding:8px;background:rgba(80,19,19,0.4);border-radius:6px;}
 
 /* DASHBOARD */
-.dashboard{display:none;min-height:100vh;position:relative;z-index:1;}
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:0.5px solid var(--border);background:rgba(8,8,8,0.95);backdrop-filter:blur(20px);position:sticky;top:0;z-index:100;}
+.dashboard{display:none;min-height:100vh;}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid var(--border);background:rgba(8,8,8,0.95);position:sticky;top:0;z-index:100;}
 .topbar-brand{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;letter-spacing:0.12em;}
 .topbar-brand span{color:var(--gold);}
 .topbar-sub{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);margin-top:2px;}
 .topbar-right{display:flex;align-items:center;gap:12px;}
-.badge-admin{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);border:0.5px solid #c9a84c44;padding:5px 12px;border-radius:20px;background:#c9a84c11;}
-.btn-logout{font-size:11px;color:var(--gray);background:transparent;border:0.5px solid var(--border);border-radius:6px;padding:6px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+.badge-admin{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.3);padding:5px 12px;border-radius:20px;background:rgba(201,168,76,0.1);}
+.btn-logout{font-size:11px;color:var(--gray);background:transparent;border:1px solid var(--border);border-radius:6px;padding:6px 12px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
 .btn-logout:hover{border-color:var(--red);color:var(--red);}
 
 .main{max-width:1100px;margin:0 auto;padding:40px;}
 
 /* STATS */
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:0.5px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:40px;}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:40px;}
 .stat-box{background:var(--black);padding:24px;text-align:center;}
 .stat-num{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:var(--gold);line-height:1;}
 .stat-lbl{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);margin-top:6px;}
 
-/* SECTION */
+/* ADD */
+.add-card{background:#111;border:1px solid var(--border);border-radius:12px;padding:28px;margin-bottom:32px;}
+.add-grid{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:end;margin-top:16px;}
+.input-wrap label{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);display:block;margin-bottom:6px;}
+.input-wrap input,.input-wrap select{width:100%;background:#1a1a1a;border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:13px;color:var(--white);font-family:inherit;outline:none;transition:border 0.2s;}
+.input-wrap input:focus,.input-wrap select:focus{border-color:var(--gold);}
+.input-wrap select option{background:#1a1a1a;}
+.btn-add{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--black);border:none;border-radius:8px;padding:10px 20px;font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;font-family:inherit;white-space:nowrap;transition:all 0.2s;height:40px;}
+.btn-add:hover{transform:translateY(-1px);}
+
+/* TABLE */
 .section-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:6px;}
 .section-title em{font-style:italic;color:var(--gold);}
 .section-sub{font-size:12px;color:var(--gray);margin-bottom:24px;}
-
-/* ADD CLIENT */
-.add-card{background:#111;border:0.5px solid var(--border);border-radius:12px;padding:28px;margin-bottom:32px;}
-.add-title{font-size:13px;font-weight:500;letter-spacing:0.05em;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
-.add-grid{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:end;}
-.input-wrap label{font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);display:block;margin-bottom:6px;}
-.input-wrap input, .input-wrap select{width:100%;background:#1a1a1a;border:0.5px solid var(--border);border-radius:8px;padding:10px 12px;font-size:13px;color:var(--white);font-family:inherit;outline:none;transition:border 0.2s;}
-.input-wrap input:focus, .input-wrap select:focus{border-color:var(--gold);}
-.input-wrap select option{background:#1a1a1a;}
-.btn-add{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--black);border:none;border-radius:8px;padding:10px 20px;font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;font-family:inherit;white-space:nowrap;transition:all 0.2s;height:40px;}
-.btn-add:hover{transform:translateY(-1px);box-shadow:0 6px 20px #c9a84c33;}
-
-/* TABLE */
-.table-wrap{background:#111;border:0.5px solid var(--border);border-radius:12px;overflow:hidden;}
-.table-header{display:grid;grid-template-columns:2fr 2fr 1fr 1fr 1.5fr;gap:0;background:#161616;border-bottom:0.5px solid var(--border);}
+.table-wrap{background:#111;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.table-header{display:grid;grid-template-columns:2fr 2fr 1fr 1fr 1.5fr;background:#161616;border-bottom:1px solid var(--border);}
 .th{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);padding:12px 16px;}
-.table-body{}
-.table-row{display:grid;grid-template-columns:2fr 2fr 1fr 1fr 1.5fr;gap:0;border-bottom:0.5px solid #1a1a1a;transition:background 0.2s;}
+.table-row{display:grid;grid-template-columns:2fr 2fr 1fr 1fr 1.5fr;border-bottom:1px solid #1a1a1a;transition:background 0.2s;}
 .table-row:last-child{border-bottom:none;}
 .table-row:hover{background:#161616;}
 .td{padding:14px 16px;font-size:13px;display:flex;align-items:center;}
 .td-nome{font-weight:500;}
-.td-senha{font-family:'DM Mono',monospace;font-size:11px;color:var(--gray);background:#1a1a1a;padding:3px 8px;border-radius:4px;border:0.5px solid var(--border);}
+.td-senha{font-family:'DM Mono',monospace;font-size:11px;color:var(--gray);background:#1a1a1a;padding:3px 8px;border-radius:4px;border:1px solid var(--border);}
 .badge-status{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:20px;font-weight:500;}
-.badge-ativo{background:#27c93f22;color:var(--green);border:0.5px solid #27c93f44;}
-.badge-bloqueado{background:#ff5f5622;color:var(--red);border:0.5px solid #ff5f5644;}
+.badge-ativo{background:rgba(39,201,63,0.1);color:var(--green);border:1px solid rgba(39,201,63,0.3);}
+.badge-bloqueado{background:rgba(255,95,86,0.1);color:var(--red);border:1px solid rgba(255,95,86,0.3);}
 .badge-plano{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:20px;}
-.badge-starter{background:#2563eb22;color:#60a5fa;border:0.5px solid #2563eb44;}
-.badge-pro{background:#7c3aed22;color:#a78bfa;border:0.5px solid #7c3aed44;}
-.badge-vitalicio{background:#c9a84c22;color:var(--gold);border:0.5px solid #c9a84c44;}
-.actions{display:flex;gap:6px;}
-.btn-acao{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border-radius:6px;cursor:pointer;font-family:inherit;border:0.5px solid;transition:all 0.2s;}
-.btn-bloquear{background:#ff5f5611;color:var(--red);border-color:#ff5f5644;}
-.btn-bloquear:hover{background:#ff5f5622;}
-.btn-ativar{background:#27c93f11;color:var(--green);border-color:#27c93f44;}
-.btn-ativar:hover{background:#27c93f22;}
-.btn-remover{background:#44444411;color:var(--gray);border-color:var(--border);}
+.badge-starter{background:rgba(37,99,235,0.1);color:#60a5fa;border:1px solid rgba(37,99,235,0.3);}
+.badge-pro{background:rgba(124,58,237,0.1);color:#a78bfa;border:1px solid rgba(124,58,237,0.3);}
+.badge-vitalicio{background:rgba(201,168,76,0.1);color:var(--gold);border:1px solid rgba(201,168,76,0.3);}
+.actions{display:flex;gap:6px;flex-wrap:wrap;}
+.btn-acao{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border-radius:6px;cursor:pointer;font-family:inherit;border:1px solid;transition:all 0.2s;}
+.btn-bloquear{background:rgba(255,95,86,0.1);color:var(--red);border-color:rgba(255,95,86,0.3);}
+.btn-bloquear:hover{background:rgba(255,95,86,0.2);}
+.btn-ativar{background:rgba(39,201,63,0.1);color:var(--green);border-color:rgba(39,201,63,0.3);}
+.btn-ativar:hover{background:rgba(39,201,63,0.2);}
+.btn-remover{background:rgba(68,68,68,0.1);color:var(--gray);border-color:var(--border);}
 .btn-remover:hover{background:var(--border);color:#ccc;}
-.btn-copiar{background:#c9a84c11;color:var(--gold);border-color:#c9a84c44;}
-.btn-copiar:hover{background:#c9a84c22;}
+.btn-copiar{background:rgba(201,168,76,0.1);color:var(--gold);border-color:rgba(201,168,76,0.3);}
+.btn-copiar:hover{background:rgba(201,168,76,0.2);}
 
 /* TOAST */
 .toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(60px);background:var(--white);color:var(--black);font-size:13px;padding:10px 20px;border-radius:20px;opacity:0;transition:all 0.3s;z-index:999;white-space:nowrap;font-weight:500;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-
-/* EMPTY */
 .empty-row{text-align:center;padding:40px;color:var(--gray);font-size:13px;}
 
-/* MODAL CONFIRMAÇÃO */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;display:none;align-items:center;justify-content:center;}
 .modal-overlay.show{display:flex;}
-.modal-box{background:#111;border:0.5px solid var(--border);border-radius:16px;padding:2rem;max-width:380px;width:90%;box-shadow:0 40px 80px rgba(0,0,0,0.8);}
+.modal-box{background:#111;border:1px solid var(--border);border-radius:16px;padding:2rem;max-width:380px;width:90%;}
 .modal-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;margin-bottom:8px;}
 .modal-desc{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:24px;}
 .modal-btns{display:flex;gap:10px;justify-content:flex-end;}
-.btn-cancel{background:transparent;color:var(--gray);border:0.5px solid var(--border);border-radius:8px;padding:9px 18px;cursor:pointer;font-family:inherit;font-size:12px;transition:all 0.2s;}
-.btn-cancel:hover{border-color:#888;color:var(--white);}
-.btn-confirm-red{background:var(--red);color:var(--white);border:none;border-radius:8px;padding:9px 18px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:500;transition:all 0.2s;}
-.btn-confirm-red:hover{opacity:0.85;}
+.btn-cancel{background:transparent;color:var(--gray);border:1px solid var(--border);border-radius:8px;padding:9px 18px;cursor:pointer;font-family:inherit;font-size:12px;}
+.btn-confirm{background:var(--red);color:var(--white);border:none;border-radius:8px;padding:9px 18px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:500;}
 
 @media(max-width:768px){
   .topbar{padding:14px 20px;}
@@ -119,69 +110,62 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   .add-grid{grid-template-columns:1fr;}
   .stats-row{grid-template-columns:repeat(2,1fr);}
   .table-header{display:none;}
-  .table-row{grid-template-columns:1fr;gap:4px;padding:12px 16px;}
-  .td{padding:2px 0;}
+  .table-row{grid-template-columns:1fr;padding:12px 16px;}
+  .td{padding:4px 0;}
 }
 </style>
 </head>
 <body>
+
 <div class="toast" id="toast"></div>
 
-<!-- MODAL -->
 <div class="modal-overlay" id="modal">
   <div class="modal-box">
-    <div class="modal-title" id="modal-title">Confirmar ação</div>
-    <div class="modal-desc" id="modal-desc">Tem certeza?</div>
+    <div class="modal-title" id="modal-title">Confirmar</div>
+    <div class="modal-desc" id="modal-desc"></div>
     <div class="modal-btns">
-      <button class="btn-cancel" onclick="fecharModal()">Cancelar</button>
-      <button class="btn-confirm-red" id="modal-confirm">Confirmar</button>
+      <button class="btn-cancel" id="btn-cancelar">Cancelar</button>
+      <button class="btn-confirm" id="btn-confirmar">Confirmar</button>
     </div>
   </div>
 </div>
 
-<!-- LOGIN -->
 <div class="login-wrap" id="screen-login">
   <div class="login-card">
     <div class="login-logo">
-      <div class="login-logo-icon">✦</div>
+      <div class="login-logo-icon">&#10022;</div>
       <h1>Bezier <span>Studio</span></h1>
       <p>Painel Administrativo</p>
     </div>
     <label class="field-label">Senha de administrador</label>
-    <input type="password" class="field-input" id="admin-pass" placeholder="••••••••••••"
-      onkeydown="if(event.key==='Enter')adminLogin()">
+    <input type="password" class="field-input" id="admin-pass" placeholder="Digite sua senha">
     <div class="login-err" id="login-err">Senha incorreta.</div>
-    <button class="btn-login" onclick="adminLogin()">Acessar painel</button>
+    <button class="btn-login" id="btn-entrar">Acessar painel</button>
   </div>
 </div>
 
-<!-- DASHBOARD -->
 <div class="dashboard" id="dashboard">
-
   <div class="topbar">
     <div>
       <div class="topbar-brand">Bezier <span>Studio</span></div>
       <div class="topbar-sub">Painel Administrativo</div>
     </div>
     <div class="topbar-right">
-      <div class="badge-admin">✦ Admin</div>
-      <button class="btn-logout" onclick="adminLogout()">Sair</button>
+      <div class="badge-admin">&#10022; Admin</div>
+      <button class="btn-logout" id="btn-sair">Sair</button>
     </div>
   </div>
 
   <div class="main">
-
-    <!-- STATS -->
-    <div class="stats-row" id="stats-row">
-      <div class="stat-box"><div class="stat-num" id="stat-total">0</div><div class="stat-lbl">Total de clientes</div></div>
-      <div class="stat-box"><div class="stat-num" id="stat-ativos" style="color:var(--green);">0</div><div class="stat-lbl">Ativos</div></div>
-      <div class="stat-box"><div class="stat-num" id="stat-bloqueados" style="color:var(--red);">0</div><div class="stat-lbl">Bloqueados</div></div>
-      <div class="stat-box"><div class="stat-num" id="stat-receita" style="color:var(--gold);">R$0</div><div class="stat-lbl">Receita estimada</div></div>
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-num" id="stat-total">0</div><div class="stat-lbl">Total</div></div>
+      <div class="stat-box"><div class="stat-num" id="stat-ativos" style="color:var(--green)">0</div><div class="stat-lbl">Ativos</div></div>
+      <div class="stat-box"><div class="stat-num" id="stat-bloqueados" style="color:var(--red)">0</div><div class="stat-lbl">Bloqueados</div></div>
+      <div class="stat-box"><div class="stat-num" id="stat-receita" style="color:var(--gold)">R$0</div><div class="stat-lbl">Receita</div></div>
     </div>
 
-    <!-- ADICIONAR CLIENTE -->
     <div class="add-card">
-      <div class="add-title">✦ Adicionar novo cliente</div>
+      <div style="font-size:13px;font-weight:500;">&#10022; Adicionar novo cliente</div>
       <div class="add-grid">
         <div class="input-wrap">
           <label>Nome do cliente</label>
@@ -189,271 +173,263 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
         </div>
         <div class="input-wrap">
           <label>Senha de acesso</label>
-          <input type="text" id="new-senha" placeholder="ex: joana-bz2025" oninput="gerarSenhaAuto()">
+          <input type="text" id="new-senha" placeholder="ex: joana-bz2025">
         </div>
         <div class="input-wrap">
           <label>Plano</label>
           <select id="new-plano">
-            <option value="starter">Starter — R$47/mês</option>
-            <option value="pro" selected>Pro — R$97/mês</option>
-            <option value="vitalicio">Vitalício — R$397</option>
+            <option value="starter">Starter - R$47</option>
+            <option value="pro" selected>Pro - R$97</option>
+            <option value="vitalicio">Vitalicio - R$397</option>
           </select>
         </div>
-        <button class="btn-add" onclick="adicionarCliente()">+ Adicionar</button>
+        <button class="btn-add" id="btn-adicionar">+ Adicionar</button>
       </div>
-      <div style="margin-top:10px;font-size:11px;color:var(--gray);">
-        💡 A senha é gerada automaticamente pelo nome. Você pode editar antes de adicionar.
-      </div>
+      <div style="margin-top:10px;font-size:11px;color:var(--gray);">A senha e gerada automaticamente pelo nome.</div>
     </div>
 
-    <!-- TABELA -->
     <div class="section-title">Clientes <em>cadastrados</em></div>
     <div class="section-sub">Gerencie o acesso de cada cliente ao Bezier Studio</div>
 
     <div class="table-wrap">
       <div class="table-header">
         <div class="th">Cliente</div>
-        <div class="th">Senha de acesso</div>
+        <div class="th">Senha</div>
         <div class="th">Plano</div>
         <div class="th">Status</div>
-        <div class="th">Ações</div>
+        <div class="th">Acoes</div>
       </div>
-      <div class="table-body" id="tabela-clientes">
-        <div class="empty-row">Nenhum cliente cadastrado ainda.</div>
-      </div>
+      <div id="tabela-clientes"><div class="empty-row">Carregando...</div></div>
     </div>
-
   </div>
 </div>
 
 <script>
-// ═════════════════════════════════════════════════════════════════════════════════════
-//  CONFIGURAÇÕES SUPABASE
-const SUPABASE_URL = 'https://rcxoazooannheixiulkk.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_zOZ1xY-6lgTdl-CgKNF8lA_ZmgPn646';
-const SENHA_ADMIN  = 'admin-bezier-master';
-// ══════════════════════════════════════════════════════
+var SUPABASE_URL = 'https://rcxoazooannheixiulkk.supabase.co';
+var SUPABASE_KEY = 'sb_publishable_zOZ1xY-6lgTdl-CgKNF8lA_ZmgPn646';
+var SENHA_ADMIN = 'admin-bezier-master';
+var PRECOS = {starter:47, pro:97, vitalicio:397};
 
-let clientes = [];
-let modalCallback = null;
+var clientes = [];
+var modalCallback = null;
 
-// ── SUPABASE HELPERS ──────────────────────────────────
-const SB = {
-  h: {
+function sbHeaders() {
+  return {
     'Content-Type': 'application/json',
-    'apikey': 'sb_publishable_zOZ1xY-6lgTdl-CgKNF8lA_ZmgPn646',
-    'Authorization': 'Bearer sb_publishable_zOZ1xY-6lgTdl-CgKNF8lA_ZmgPn646',
+    'apikey': SUPABASE_KEY,
+    'Authorization': 'Bearer ' + SUPABASE_KEY,
     'Prefer': 'return=representation'
-  },
-  async get() {
-    const r = await fetch(SUPABASE_URL+'/rest/v1/clientes?order=criado.desc',{headers:this.h});
-    return r.ok ? r.json() : [];
-  },
-  async add(obj) {
-    const r = await fetch(SUPABASE_URL+'/rest/v1/clientes',{method:'POST',headers:this.h,body:JSON.stringify(obj)});
-    return r.ok ? r.json() : null;
-  },
-  async patch(id,obj) {
-    const r = await fetch(SUPABASE_URL+'/rest/v1/clientes?id=eq.'+id,{method:'PATCH',headers:this.h,body:JSON.stringify(obj)});
-    return r.ok;
-  },
-  async del(id) {
-    const r = await fetch(SUPABASE_URL+'/rest/v1/clientes?id=eq.'+id,{method:'DELETE',headers:this.h});
-    return r.ok;
-  }
-};
-
-// LOGIN
-async function adminLogin(){
-  const p = document.getElementById('admin-pass').value;
-  if(p === SENHA_ADMIN){
-    document.getElementById('screen-login').style.display='none';
-    document.getElementById('dashboard').style.display='block';
-    document.getElementById('login-err').style.display='none';
-    await carregarClientes();
-  } else {
-    document.getElementById('login-err').style.display='block';
-  }
+  };
 }
 
-async function carregarClientes(){
-  document.getElementById('tabela-clientes').innerHTML='<div class="empty-row">⏳ Carregando...</div>';
-  clientes = await SB.get();
-  renderTabela();
-  atualizarStats();
+function sbGet() {
+  return fetch(SUPABASE_URL + '/rest/v1/clientes?order=criado.desc', {
+    headers: sbHeaders()
+  }).then(function(r) { return r.json(); });
 }
 
-function adminLogout(){
-  document.getElementById('screen-login').style.display='flex';
-  document.getElementById('dashboard').style.display='none';
-  document.getElementById('admin-pass').value='';
-  clientes=[];
+function sbAdd(obj) {
+  return fetch(SUPABASE_URL + '/rest/v1/clientes', {
+    method: 'POST',
+    headers: sbHeaders(),
+    body: JSON.stringify(obj)
+  }).then(function(r) { return r.ok ? r.json() : null; });
 }
 
-// TOAST
-function toast(msg){
-  const t=document.getElementById('toast');
-  t.innerText=msg;t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2500);
+function sbPatch(id, obj) {
+  return fetch(SUPABASE_URL + '/rest/v1/clientes?id=eq.' + id, {
+    method: 'PATCH',
+    headers: sbHeaders(),
+    body: JSON.stringify(obj)
+  }).then(function(r) { return r.ok; });
 }
 
-// MODAL
-function confirmar(title, desc, callback){
-  document.getElementById('modal-title').innerText=title;
-  document.getElementById('modal-desc').innerText=desc;
+function sbDel(id) {
+  return fetch(SUPABASE_URL + '/rest/v1/clientes?id=eq.' + id, {
+    method: 'DELETE',
+    headers: sbHeaders()
+  }).then(function(r) { return r.ok; });
+}
+
+function toast(msg) {
+  var t = document.getElementById('toast');
+  t.innerText = msg;
+  t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 2500);
+}
+
+function mostrarModal(titulo, desc, cb) {
+  document.getElementById('modal-title').innerText = titulo;
+  document.getElementById('modal-desc').innerText = desc;
   document.getElementById('modal').classList.add('show');
-  modalCallback=callback;
+  modalCallback = cb;
 }
-function fecharModal(){
-  document.getElementById('modal').classList.remove('show');
-  modalCallback=null;
-}
-document.getElementById('modal-confirm').onclick=()=>{
-  if(modalCallback)modalCallback();
-  fecharModal();
-};
 
-// GERAR SENHA AUTO
-function gerarSenhaAuto(){
-  // não sobrescreve se o usuário está digitando a senha manualmente
+function fecharModal() {
+  document.getElementById('modal').classList.remove('show');
+  modalCallback = null;
 }
-document.getElementById('new-nome').addEventListener('input', function(){
-  const nome = this.value.trim().toLowerCase()
-    .replace(/\s+/g,'-')
-    .replace(/[^a-z0-9-]/g,'');
-  if(nome) document.getElementById('new-senha').value = nome+'-bz2025';
-  else document.getElementById('new-senha').value = '';
+
+document.getElementById('btn-cancelar').addEventListener('click', fecharModal);
+
+document.getElementById('btn-confirmar').addEventListener('click', function() {
+  if (modalCallback) modalCallback();
+  fecharModal();
 });
 
-// ADICIONAR CLIENTE
-async function adicionarCliente(){
-  const nome = document.getElementById('new-nome').value.trim();
-  const senha = document.getElementById('new-senha').value.trim();
-  const plano = document.getElementById('new-plano').value;
-
-  if(!nome || !senha){toast('⚠ Preencha nome e senha');return;}
-  if(clientes.find(c=>c.senha===senha)){toast('⚠ Essa senha já está em uso');return;}
-
-  toast('⏳ Salvando no Supabase...');
-  const novo = { nome, senha, plano, ativo: true };
-  const result = await SB.add(novo);
-  if(result){
-    await carregarClientes();
-    document.getElementById('new-nome').value='';
-    document.getElementById('new-senha').value='';
-    toast('✓ Cliente salvo na nuvem! Mande a senha por email.');
-  } else {
-    toast('❌ Erro ao salvar. Verifique o Supabase.');
-  }
+function atualizarStats() {
+  var total = clientes.length;
+  var ativos = clientes.filter(function(c) { return c.ativo; }).length;
+  var bloqueados = total - ativos;
+  var receita = clientes.filter(function(c) { return c.ativo; }).reduce(function(s, c) {
+    return s + (PRECOS[c.plano] || 0);
+  }, 0);
+  document.getElementById('stat-total').innerText = total;
+  document.getElementById('stat-ativos').innerText = ativos;
+  document.getElementById('stat-bloqueados').innerText = bloqueados;
+  document.getElementById('stat-receita').innerText = 'R$' + receita;
 }
 
-// BLOQUEAR / ATIVAR
-function toggleStatus(id){
-  const c = clientes.find(c=>c.id===id);
-  if(!c) return;
-  if(c.ativo){
-    confirmar(
-      'Bloquear acesso',
-      `Deseja bloquear o acesso de "${c.nome}"? Ele não conseguirá mais entrar no gerador.`,
-      async ()=>{
-        await SB.patch(id,{ativo:false});
-        await carregarClientes();
-        toast('✓ Acesso bloqueado!');
-      }
-    );
-  } else {
-    confirmar(
-      'Reativar acesso',
-      `Reativar o acesso de "${c.nome}"?`,
-      async ()=>{
-        await SB.patch(id,{ativo:true});
-        await carregarClientes();
-        toast('✓ Acesso reativado!');
-      }
-    );
-  }
+function badgePlano(plano) {
+  var classes = {starter:'badge-starter', pro:'badge-pro', vitalicio:'badge-vitalicio'};
+  var labels = {starter:'Starter', pro:'Pro', vitalicio:'Vitalicio'};
+  return '<span class="badge-plano ' + (classes[plano] || 'badge-starter') + '">' + (labels[plano] || plano) + '</span>';
 }
 
-// REMOVER
-function removerCliente(id){
-  const c = clientes.find(c=>c.id===id);
-  if(!c) return;
-  confirmar(
-    'Remover cliente',
-    `Tem certeza que deseja remover "${c.nome}" permanentemente?`,
-    async ()=>{
-      await SB.del(id);
-      await carregarClientes();
-      toast('✓ Cliente removido!');
-    }
-  );
-}
-
-// COPIAR SENHA
-function copiarSenha(senha){
-  navigator.clipboard.writeText(senha).then(()=>toast('✓ Senha copiada!'));
-}
-
-// SALVAR — agora gerenciado pelo Supabase
-
-// STATS
-const PRECOS = {starter:47, pro:97, vitalicio:397};
-function atualizarStats(){
-  const total = clientes.length;
-  const ativos = clientes.filter(c=>c.ativo).length;
-  const bloqueados = total - ativos;
-  const receita = clientes.filter(c=>c.ativo).reduce((s,c)=>s+(PRECOS[c.plano]||0),0);
-  document.getElementById('stat-total').innerText=total;
-  document.getElementById('stat-ativos').innerText=ativos;
-  document.getElementById('stat-bloqueados').innerText=bloqueados;
-  document.getElementById('stat-receita').innerText='R$'+receita.toLocaleString('pt-BR');
-}
-
-// BADGES
-function badgePlano(plano){
-  const map={starter:'badge-starter',pro:'badge-pro',vitalicio:'badge-vitalicio'};
-  const label={starter:'Starter',pro:'Pro',vitalicio:'Vitalício'};
-  return`<span class="badge-plano ${map[plano]||'badge-starter'}">${label[plano]||plano}</span>`;
-}
-
-// RENDER TABELA
-function renderTabela(){
-  const el=document.getElementById('tabela-clientes');
-  if(!clientes.length){
-    el.innerHTML='<div class="empty-row">Nenhum cliente cadastrado ainda.</div>';
+function renderTabela() {
+  var el = document.getElementById('tabela-clientes');
+  if (!clientes.length) {
+    el.innerHTML = '<div class="empty-row">Nenhum cliente cadastrado.</div>';
     return;
   }
-  el.innerHTML=clientes.map(c=>`
-    <div class="table-row">
-      <div class="td td-nome">
-        <div>${c.nome}</div>
-        <div style="font-size:11px;color:var(--gray);margin-top:2px;">Desde ${c.criado}</div>
-      </div>
-      <div class="td">
-        <span class="td-senha">${c.senha}</span>
-      </div>
-      <div class="td">${badgePlano(c.plano)}</div>
-      <div class="td">
-        <span class="badge-status ${c.ativo?'badge-ativo':'badge-bloqueado'}">
-          ${c.ativo?'✓ Ativo':'✕ Bloqueado'}
-        </span>
-      </div>
-      <div class="td">
-        <div class="actions">
-          <button class="btn-acao btn-copiar" onclick="copiarSenha('${c.senha}')">Copiar senha</button>
-          <button class="btn-acao ${c.ativo?'btn-bloquear':'btn-ativar'}" onclick="toggleStatus(${c.id})">
-            ${c.ativo?'Bloquear':'Ativar'}
-          </button>
-          <button class="btn-acao btn-remover" onclick="removerCliente(${c.id})">Remover</button>
-        </div>
-      </div>
-    </div>
-  `).join('');
+  var html = '';
+  for (var i = 0; i < clientes.length; i++) {
+    var c = clientes[i];
+    var statusBadge = c.ativo
+      ? '<span class="badge-status badge-ativo">Ativo</span>'
+      : '<span class="badge-status badge-bloqueado">Bloqueado</span>';
+    var btnToggle = c.ativo
+      ? '<button class="btn-acao btn-bloquear" data-id="' + c.id + '" data-acao="bloquear">Bloquear</button>'
+      : '<button class="btn-acao btn-ativar" data-id="' + c.id + '" data-acao="ativar">Ativar</button>';
+    html += '<div class="table-row">';
+    html += '<div class="td td-nome"><div>' + c.nome + '</div></div>';
+    html += '<div class="td"><span class="td-senha">' + c.senha + '</span></div>';
+    html += '<div class="td">' + badgePlano(c.plano) + '</div>';
+    html += '<div class="td">' + statusBadge + '</div>';
+    html += '<div class="td"><div class="actions">';
+    html += '<button class="btn-acao btn-copiar" data-senha="' + c.senha + '">Copiar</button>';
+    html += btnToggle;
+    html += '<button class="btn-acao btn-remover" data-id="' + c.id + '" data-acao="remover">Remover</button>';
+    html += '</div></div>';
+    html += '</div>';
+  }
+  el.innerHTML = html;
+
+  el.querySelectorAll('.btn-copiar').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      navigator.clipboard.writeText(this.getAttribute('data-senha'));
+      toast('Senha copiada!');
+    });
+  });
+
+  el.querySelectorAll('[data-acao="bloquear"]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var id = this.getAttribute('data-id');
+      var c = clientes.find(function(x) { return x.id === id; });
+      if (!c) return;
+      mostrarModal('Bloquear acesso', 'Bloquear o acesso de "' + c.nome + '"?', function() {
+        toast('Bloqueando...');
+        sbPatch(id, {ativo: false}).then(function(ok) {
+          if (ok) { carregarClientes(); toast('Acesso bloqueado!'); }
+          else { toast('Erro ao bloquear!'); }
+        });
+      });
+    });
+  });
+
+  el.querySelectorAll('[data-acao="ativar"]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var id = this.getAttribute('data-id');
+      var c = clientes.find(function(x) { return x.id === id; });
+      if (!c) return;
+      toast('Reativando...');
+      sbPatch(id, {ativo: true}).then(function(ok) {
+        if (ok) { carregarClientes(); toast('Acesso reativado!'); }
+        else { toast('Erro ao reativar!'); }
+      });
+    });
+  });
+
+  el.querySelectorAll('[data-acao="remover"]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var id = this.getAttribute('data-id');
+      var c = clientes.find(function(x) { return x.id === id; });
+      if (!c) return;
+      mostrarModal('Remover cliente', 'Remover "' + c.nome + '" permanentemente?', function() {
+        toast('Removendo...');
+        sbDel(id).then(function(ok) {
+          if (ok) { carregarClientes(); toast('Cliente removido!'); }
+          else { toast('Erro ao remover!'); }
+        });
+      });
+    });
+  });
 }
 
-// ENTER no login
-document.getElementById('admin-pass').addEventListener('keydown',e=>{
-  if(e.key==='Enter')adminLogin();
+function carregarClientes() {
+  document.getElementById('tabela-clientes').innerHTML = '<div class="empty-row">Carregando...</div>';
+  sbGet().then(function(data) {
+    clientes = data || [];
+    renderTabela();
+    atualizarStats();
+  });
+}
+
+document.getElementById('new-nome').addEventListener('input', function() {
+  var nome = this.value.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+  document.getElementById('new-senha').value = nome ? nome + '-bz2025' : '';
+});
+
+document.getElementById('btn-adicionar').addEventListener('click', function() {
+  var nome = document.getElementById('new-nome').value.trim();
+  var senha = document.getElementById('new-senha').value.trim();
+  var plano = document.getElementById('new-plano').value;
+  if (!nome || !senha) { toast('Preencha nome e senha'); return; }
+  if (clientes.find(function(c) { return c.senha === senha; })) { toast('Senha ja em uso'); return; }
+  toast('Salvando...');
+  sbAdd({nome: nome, senha: senha, plano: plano, ativo: true}).then(function(r) {
+    if (r) {
+      carregarClientes();
+      document.getElementById('new-nome').value = '';
+      document.getElementById('new-senha').value = '';
+      toast('Cliente adicionado!');
+    } else {
+      toast('Erro ao salvar!');
+    }
+  });
+});
+
+document.getElementById('btn-entrar').addEventListener('click', function() {
+  var p = document.getElementById('admin-pass').value;
+  if (p === SENHA_ADMIN) {
+    document.getElementById('screen-login').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    document.getElementById('login-err').style.display = 'none';
+    carregarClientes();
+  } else {
+    document.getElementById('login-err').style.display = 'block';
+  }
+});
+
+document.getElementById('admin-pass').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') document.getElementById('btn-entrar').click();
+});
+
+document.getElementById('btn-sair').addEventListener('click', function() {
+  document.getElementById('screen-login').style.display = 'flex';
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('admin-pass').value = '';
+  clientes = [];
 });
 </script>
 </body>
