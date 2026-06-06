@@ -227,32 +227,67 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 </div>
 
 <script>
-// ══════════════════════════════════════════════
-//  SENHA DO ADMIN — não compartilhe!
-const SENHA_ADMIN = 'admin-bezier-master';
-// ══════════════════════════════════════════════
+// ═════════════════════════════════════════════════════════════════════════════════════
+//  CONFIGURAÇÕES SUPABASE
+const SUPABASE_URL = 'https://rcxoazooannheixiulkk.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_zOZ1xY-6lgTdl-CgKNF8lA_ZmgPn646';
+const SENHA_ADMIN  = 'admin-bezier-master';
+// ══════════════════════════════════════════════════════
 
-let clientes = JSON.parse(localStorage.getItem('bz_clientes') || '[]');
+let clientes = [];
 let modalCallback = null;
 
+// ── SUPABASE HELPERS ──────────────────────────────────
+const SB = {
+  h: {
+    'Content-Type': 'application/json',
+    'apikey': 'sb_publishable_zOZ1xY-6lgTdl-CgKNF8lA_ZmgPn646',
+    'Authorization': 'Bearer sb_publishable_zOZ1xY-6lgTdl-CgKNF8lA_ZmgPn646',
+    'Prefer': 'return=representation'
+  },
+  async get() {
+    const r = await fetch(SUPABASE_URL+'/rest/v1/clientes?order=criado.desc',{headers:this.h});
+    return r.ok ? r.json() : [];
+  },
+  async add(obj) {
+    const r = await fetch(SUPABASE_URL+'/rest/v1/clientes',{method:'POST',headers:this.h,body:JSON.stringify(obj)});
+    return r.ok ? r.json() : null;
+  },
+  async patch(id,obj) {
+    const r = await fetch(SUPABASE_URL+'/rest/v1/clientes?id=eq.'+id,{method:'PATCH',headers:this.h,body:JSON.stringify(obj)});
+    return r.ok;
+  },
+  async del(id) {
+    const r = await fetch(SUPABASE_URL+'/rest/v1/clientes?id=eq.'+id,{method:'DELETE',headers:this.h});
+    return r.ok;
+  }
+};
+
 // LOGIN
-function adminLogin(){
+async function adminLogin(){
   const p = document.getElementById('admin-pass').value;
   if(p === SENHA_ADMIN){
     document.getElementById('screen-login').style.display='none';
     document.getElementById('dashboard').style.display='block';
     document.getElementById('login-err').style.display='none';
-    renderTabela();
-    atualizarStats();
+    await carregarClientes();
   } else {
     document.getElementById('login-err').style.display='block';
   }
+}
+
+async function carregarClientes(){
+  document.getElementById('tabela-clientes').innerHTML='<div class="empty-row">⏳ Carregando...</div>';
+  clientes = await SB.get();
+  renderTabela();
+  atualizarStats();
 }
 
 function adminLogout(){
   document.getElementById('screen-login').style.display='flex';
   document.getElementById('dashboard').style.display='none';
   document.getElementById('admin-pass').value='';
+  clientes=[];
 }
 
 // TOAST
@@ -291,7 +326,7 @@ document.getElementById('new-nome').addEventListener('input', function(){
 });
 
 // ADICIONAR CLIENTE
-function adicionarCliente(){
+async function adicionarCliente(){
   const nome = document.getElementById('new-nome').value.trim();
   const senha = document.getElementById('new-senha').value.trim();
   const plano = document.getElementById('new-plano').value;
@@ -299,19 +334,17 @@ function adicionarCliente(){
   if(!nome || !senha){toast('⚠ Preencha nome e senha');return;}
   if(clientes.find(c=>c.senha===senha)){toast('⚠ Essa senha já está em uso');return;}
 
-  clientes.push({
-    id: Date.now(),
-    nome,
-    senha,
-    plano,
-    ativo: true,
-    criado: new Date().toLocaleDateString('pt-BR')
-  });
-
-  salvar();
-  document.getElementById('new-nome').value='';
-  document.getElementById('new-senha').value='';
-  toast('✓ Cliente adicionado! Mande a senha por email.');
+  toast('⏳ Salvando no Supabase...');
+  const novo = { nome, senha, plano, ativo: true };
+  const result = await SB.add(novo);
+  if(result){
+    await carregarClientes();
+    document.getElementById('new-nome').value='';
+    document.getElementById('new-senha').value='';
+    toast('✓ Cliente salvo na nuvem! Mande a senha por email.');
+  } else {
+    toast('❌ Erro ao salvar. Verifique o Supabase.');
+  }
 }
 
 // BLOQUEAR / ATIVAR
@@ -322,10 +355,22 @@ function toggleStatus(id){
     confirmar(
       'Bloquear acesso',
       `Deseja bloquear o acesso de "${c.nome}"? Ele não conseguirá mais entrar no gerador.`,
-      ()=>{c.ativo=false;salvar();toast('✓ Acesso bloqueado');}
+      async ()=>{
+        await SB.patch(id,{ativo:false});
+        await carregarClientes();
+        toast('✓ Acesso bloqueado!');
+      }
     );
   } else {
-    c.ativo=true;salvar();toast('✓ Acesso reativado!');
+    confirmar(
+      'Reativar acesso',
+      `Reativar o acesso de "${c.nome}"?`,
+      async ()=>{
+        await SB.patch(id,{ativo:true});
+        await carregarClientes();
+        toast('✓ Acesso reativado!');
+      }
+    );
   }
 }
 
@@ -336,7 +381,11 @@ function removerCliente(id){
   confirmar(
     'Remover cliente',
     `Tem certeza que deseja remover "${c.nome}" permanentemente?`,
-    ()=>{clientes=clientes.filter(c=>c.id!==id);salvar();toast('✓ Cliente removido');}
+    async ()=>{
+      await SB.del(id);
+      await carregarClientes();
+      toast('✓ Cliente removido!');
+    }
   );
 }
 
@@ -345,12 +394,7 @@ function copiarSenha(senha){
   navigator.clipboard.writeText(senha).then(()=>toast('✓ Senha copiada!'));
 }
 
-// SALVAR
-function salvar(){
-  localStorage.setItem('bz_clientes',JSON.stringify(clientes));
-  renderTabela();
-  atualizarStats();
-}
+// SALVAR — agora gerenciado pelo Supabase
 
 // STATS
 const PRECOS = {starter:47, pro:97, vitalicio:397};
