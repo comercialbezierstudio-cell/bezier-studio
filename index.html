@@ -1576,6 +1576,8 @@ async function doLogin(){
     if(savedTheme==='dark'){document.body.setAttribute('data-theme','dark');document.getElementById('theme-btn').innerText='☀️';}
     renderPaletteQuick();
     renderPresetSelect();
+    // Inicia o monitor de sessão — verifica a cada 5min se acesso ainda está ativo
+    iniciarMonitorSessao(p);
   } else {
     document.getElementById('login-err').style.display='block';
     document.getElementById('login-pass').style.borderColor='#f09595';
@@ -1586,7 +1588,49 @@ async function doLogin(){
   }
 }
 
-function doLogout(){document.getElementById('screen-login').className='screen active';document.getElementById('screen-main').className='screen'}
+function doLogout(motivo){
+  // Para o monitor de sessão
+  if(window._sessionMonitor) clearInterval(window._sessionMonitor);
+  
+  // Se foi bloqueado pelo admin mostra mensagem
+  if(motivo === 'bloqueado'){
+    document.getElementById('login-err').style.display='block';
+    document.getElementById('login-err').innerText='⚠ Seu acesso foi encerrado. Entre em contato com o suporte.';
+  } else {
+    document.getElementById('login-err').style.display='none';
+    document.getElementById('login-err').innerText='✕ Senha incorreta. Verifique e tente novamente.';
+  }
+  
+  sessionStorage.removeItem('bz_auth');
+  currentUser = '';
+  document.getElementById('login-pass').value = '';
+  document.getElementById('screen-login').className='screen active';
+  document.getElementById('screen-main').className='screen';
+}
+
+// ── MONITOR DE SESSÃO ─────────────────────────────────────
+// Verifica a cada 5 minutos se o acesso ainda está ativo no Supabase
+function iniciarMonitorSessao(senha){
+  if(window._sessionMonitor) clearInterval(window._sessionMonitor);
+  
+  window._sessionMonitor = setInterval(async () => {
+    // Senha master nunca é bloqueada
+    if(senha === SENHA_MASTER) return;
+    
+    try {
+      const cliente = await verificarSenhaSupabase(senha);
+      if(!cliente){
+        // Acesso foi bloqueado ou removido
+        clearInterval(window._sessionMonitor);
+        doLogout('bloqueado');
+        showToast('⚠ Seu acesso foi encerrado pelo administrador.');
+      }
+    } catch(e) {
+      // Erro de conexão — não desconecta, tenta na próxima vez
+      console.log('Monitor: erro de conexão, tentando novamente em 5min');
+    }
+  }, 5 * 60 * 1000); // 5 minutos
+}
 
 function showTab(t){
   ['gerador','ancora','campanha','presets','colecao','catalogo','cores','tendencia','historico'].forEach(x=>{
