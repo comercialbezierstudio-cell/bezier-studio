@@ -106,25 +106,6 @@ textarea{resize:vertical;min-height:48px;line-height:1.6}
 .hash-tag:hover{opacity:0.8}
 
 /* ── AI REFINE PANEL ── */
-.ai-refine-panel{margin-top:12px;border:1px solid #7c3aed44;border-radius:var(--radius-lg);overflow:hidden;background:var(--bg);}
-.ai-refine-header{background:linear-gradient(135deg,#7c3aed18,#2563eb18);padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #7c3aed22;}
-.ai-refine-header span{font-size:12px;font-weight:500;background:linear-gradient(135deg,#7c3aed,#2563eb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.ai-refine-body{padding:12px 14px;}
-.ai-refine-input{width:100%;font-size:13px;color:var(--text);background:var(--bg2);border:0.5px solid #7c3aed55;border-radius:var(--radius);padding:9px 12px;font-family:inherit;outline:none;resize:vertical;min-height:52px;transition:border 0.15s;}
-.ai-refine-input:focus{border-color:#7c3aed;}
-.ai-refine-suggestions{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0;}
-.ai-chip{font-size:11px;padding:4px 10px;border-radius:20px;border:0.5px solid #7c3aed44;background:#7c3aed11;color:#7c3aed;cursor:pointer;transition:all 0.15s;}
-[data-theme="dark"] .ai-chip{color:#a78bfa;border-color:#a78bfa44;background:#7c3aed22;}
-.ai-chip:hover{background:#7c3aed22;border-color:#7c3aed;}
-.ai-refine-result{margin-top:10px;display:none;}
-.ai-result-box{background:var(--bg2);border-radius:var(--radius);padding:12px;font-size:12px;font-family:'SF Mono','Fira Code',monospace;line-height:1.8;color:var(--text);white-space:pre-wrap;word-break:break-word;border:0.5px solid #7c3aed33;min-height:48px;}
-.ai-loading{display:flex;align-items:center;gap:8px;padding:12px;font-size:12px;color:#7c3aed;}
-[data-theme="dark"] .ai-loading{color:#a78bfa;}
-.ai-dot{width:6px;height:6px;border-radius:50%;background:#7c3aed;animation:aiPulse 1.2s infinite;}
-[data-theme="dark"] .ai-dot{background:#a78bfa;}
-.ai-dot:nth-child(2){animation-delay:0.2s;}
-.ai-dot:nth-child(3){animation-delay:0.4s;}
-@keyframes aiPulse{0%,80%,100%{opacity:0.3;transform:scale(0.8);}40%{opacity:1;transform:scale(1);}}
 @keyframes shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-8px);}40%{transform:translateX(8px);}60%{transform:translateX(-5px);}80%{transform:translateX(5px);}}
 </style>
 </head>
@@ -459,6 +440,46 @@ textarea{resize:vertical;min-height:48px;line-height:1.6}
                 <option value="tulle fabric texture, open mesh net structure, stiff transparent volume, architectural layer behavior, subtle iridescent quality, bridal or editorial fabric">Tulle — Volumoso transparente</option>
                 <option value="mesh technical fabric, geometric open knit structure, semi-transparent athletic textile, clean grid pattern, modern sporty aesthetic, visible skin underneath, performance luxury material">Mesh técnico — Esportivo</option>
                 <option value="burnout velvet devoré texture, semi-transparent floral pattern on velvet base, alternating sheer and opaque sections, luxury artistic textile, complex surface detail">Devoré velvet — Queimado artístico</option>
+                <option value="georgette fabric texture, lightweight sheer crepe weave, soft fluid transparency, subtle crinkle surface, elegant drape with movement, delicate semi-transparent quality">Georgette — Transparente fluido</option>
+                <option value="voile fabric, ultra lightweight open plain weave, sheer delicate transparency, crisp soft drape, summer luxury textile, subtle structured transparency">Voile — Ultra leve</option>
+              </optgroup>
+              <optgroup label="── Esportivo &amp; Técnico ──">
+                <option value="compression sportswear fabric, smooth matte surface, four-way stretch behavior, body contouring fit, athletic performance textile, clean modern silhouette, no visible texture">Compressão — Fitness premium</option>
+                <option value="moisture-wicking technical jersey, smooth athletic surface, performance knit grain, lightweight breathable texture, functional sportswear quality, clean matte finish">Jersey técnico — Esportivo</option>
+                <option value="windbreaker nylon shell fabric, smooth crinkle surface, lightweight structured drape, subtle sheen, technical outerwear quality, water-resistant appearance">Windbreaker — Nylon leve</option>
+                <option value="fleece performance fabric, soft brushed surface, lightweight warmth, subtle nap texture, athletic outdoor quality, cozy structured silhouette">Fleece técnico — Outdoor</option>
+                <option value="scuba fabric texture, smooth double knit surface, structured body-contouring drape, matte finish, minimal stretch visible, clean modern architectural silhouette">Scuba — Estruturado moderno</option>
+                <option value="ponte knit fabric, smooth stable knit surface, structured medium weight drape, minimal stretch visible, tailored ponte quality, clean professional finish">Ponte — Alfaiataria stretch</option>
+              </optgroup>
+              <optgroup label="── Renda &amp; Bordados ──">
+                <option value="delicate lace fabric texture, intricate floral pattern weave, semi-transparent ornate surface, feminine luxury textile, fine thread detail, romantic fashion quality">Renda — Delicada floral</option>
+                <option value="guipure lace texture, raised bold floral motif, structured semi-opaque surface, heavy luxury lace quality, architectural floral pattern, couture lace fabric">Guipure — Renda estruturada</option>
+                <option value="embroidered fabric surface, raised thread pattern on base cloth, textured ornate surface, artisanal hand-craft quality, decorative textile detail, luxury embroidery finish">Bordado — Artesanal elevado</option>
+                <option value="eyelet fabric texture, small punched hole pattern, crisp cotton base, decorative open weave, summer luxury textile, clean geometric perforations">Laise / Eyelet — Perfurado</option>
+                <option value="macrame textile surface, knotted cord pattern, open geometric structure, artisanal bohemian texture, heavy handcrafted quality, 3D knot relief">Macramê — Artesanal nó</option>
+              </optgroup>
+              <optgroup label="── Cetins &amp; Brilhosos ──">
+                <option value="sequin embellished fabric, reflective paillette surface, high glamour sparkle texture, dramatic light play, evening wear quality, maximum reflectivity">Paetê / Sequin — Glamour</option>
+                <option value="metallic lamé fabric texture, gold or silver woven metallic surface, high sheen reflective quality, luxury evening textile, dramatic metallic drape">Lamê metálico — Espelhado</option>
+                <option value="holographic fabric texture, rainbow iridescent surface, color-shifting reflective quality, futuristic fashion textile, prismatic light effect">Holográfico — Iridescente</option>
+                <option value="lurex knit fabric, subtle metallic yarn woven into knit base, gentle sparkle texture, sophisticated evening knitwear quality, refined metallic shimmer">Lurex — Brilho sutil</option>
+                <option value="glossy PVC fabric texture, high shine plastic surface, mirror-like reflectivity, structured stiff silhouette, modern avant-garde fashion material, latex-like appearance">PVC brilhoso — Látex moderno</option>
+              </optgroup>
+              <optgroup label="── Estampados &amp; Especiais ──">
+                <option value="printed silk texture, smooth surface with vivid print, fluid drape behavior, luxury printed textile quality, sharp print registration, premium silk-like hand">Seda estampada — Print vívido</option>
+                <option value="tie-dye cotton texture, soft irregular color wash pattern, casual artisanal surface, vintage bohemian quality, organic dye variation, soft cotton base">Tie-dye — Artesanal orgânico</option>
+                <option value="plaid wool fabric, classic tartan pattern weave, medium weight structured drape, heritage textile quality, traditional checkered weave, refined casual luxury">Xadrez tartan — Clássico</option>
+                <option value="pinstripe suiting fabric, fine vertical stripe pattern, premium suiting texture, structured professional drape, traditional menswear quality, refined tailoring fabric">Listrado / Pinstripe — Alfaiataria</option>
+                <option value="animal print fabric, bold pattern on smooth base, fashion-forward surface, statement textile quality, crisp pattern registration, luxury fashion print">Animal print — Estampado bold</option>
+                <option value="jacquard brocade fabric, woven metallic floral pattern, raised luxury surface, structured opulent drape, couture brocade quality, rich ornate textile">Brocado — Jacquard ornamental</option>
+              </optgroup>
+              <optgroup label="── Sustentáveis &amp; Inovadores ──">
+                <option value="organic cotton fabric texture, natural unbleached fiber, subtle irregular weave, eco-luxury surface, soft matte hand, sustainable fashion quality, authentic natural fiber character">Algodão orgânico — Eco luxo</option>
+                <option value="recycled polyester fabric, smooth technical surface, sustainable performance textile, clean modern finish, eco-conscious sportswear quality, functional matte surface">Poliéster reciclado — Sustentável</option>
+                <option value="tencel lyocell fabric texture, ultra-smooth silky surface, fluid drape behavior, sustainable luxury textile, subtle natural sheen, eco-friendly silk alternative">Tencel / Lyocell — Eco sedoso</option>
+                <option value="bamboo fabric texture, ultra-soft smooth surface, subtle natural drape, sustainable luxury textile, breathable lightweight quality, clean matte finish">Bambu — Ultra macio eco</option>
+                <option value="hemp fabric texture, slightly coarse natural fiber weave, earthy matte surface, sustainable artisanal quality, raw organic character, eco-conscious luxury">Cânhamo — Natural sustentável</option>
+                <option value="pinatex pineapple leather texture, slightly textured vegan leather surface, sustainable fashion material, matte natural appearance, eco-luxury alternative leather quality">Couro de abacaxi — Vegan eco</option>
               </optgroup>
             </select></div>
         </div>
@@ -2152,6 +2173,191 @@ function copyAiResult(moduleId) {
   const resultBox = document.getElementById('ai-result-box-' + moduleId);
   if (!resultBox) return;
   navigator.clipboard.writeText(resultBox.innerText).then(()=>showToast('✓ Copiado!'));
+}
+
+// ─────────────────────────────────────────────────────────
+//  ANALISAR FOTO DE REFERENCIA COM IA
+// ─────────────────────────────────────────────────────────
+
+function abrirAnaliseFoto(moduleId) {
+  // Remove painel anterior se existir
+  const existing = document.getElementById('foto-ref-' + moduleId);
+  if (existing) { existing.remove(); return; }
+
+  const resultEl = document.getElementById(moduleId + '-result');
+  if (!resultEl) return;
+
+  const panel = document.createElement('div');
+  panel.id = 'foto-ref-' + moduleId;
+  panel.style.cssText = 'margin-top:12px;border:1px solid #c9a84c44;border-radius:12px;overflow:hidden;background:var(--bg);';
+  panel.innerHTML = `
+    <div style="background:linear-gradient(135deg,#c9a84c18,#c9a84c08);padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #c9a84c22;">
+      <span style="font-size:12px;font-weight:500;color:var(--gold);">&#128247; Analisar foto de referencia com IA</span>
+    </div>
+    <div style="padding:14px;">
+      <label style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px;">Suba uma foto para a IA analisar e gerar o prompt</label>
+
+      <div id="foto-drop-${moduleId}"
+        style="border:2px dashed #c9a84c44;border-radius:10px;padding:32px;text-align:center;cursor:pointer;transition:all 0.2s;background:#c9a84c08;"
+        onclick="document.getElementById('foto-input-${moduleId}').click()"
+        ondragover="event.preventDefault();this.style.borderColor='var(--gold)';"
+        ondragleave="this.style.borderColor='#c9a84c44';"
+        ondrop="handleFotoDrop(event,'${moduleId}')">
+        <div style="font-size:36px;margin-bottom:8px;">&#128247;</div>
+        <div style="font-size:13px;color:var(--text2);">Clique para selecionar ou arraste a foto aqui</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:4px;">JPG, PNG, WEBP — maximo 5MB</div>
+      </div>
+
+      <input type="file" id="foto-input-${moduleId}" accept="image/*" style="display:none;" onchange="handleFotoInput(event,'${moduleId}')">
+
+      <div id="foto-preview-${moduleId}" style="display:none;margin-top:12px;">
+        <img id="foto-img-${moduleId}" style="width:100%;max-height:200px;object-fit:contain;border-radius:8px;border:1px solid var(--border);">
+        <div style="margin-top:10px;">
+          <label style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:6px;">Instrucao adicional (opcional)</label>
+          <input type="text" id="foto-instrucao-${moduleId}"
+            style="width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:13px;color:var(--text);font-family:inherit;outline:none;"
+            placeholder='ex: "foque na iluminacao", "capture a textura do tecido"...'>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:10px;">
+          <button onclick="analisarFoto('${moduleId}')"
+            style="background:linear-gradient(135deg,var(--gold),#e8c97a);color:#080808;border:none;border-radius:8px;padding:10px 20px;font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;font-family:inherit;flex:1;">
+            &#10022; Analisar e gerar prompt
+          </button>
+          <button onclick="document.getElementById('foto-ref-${moduleId}').remove()"
+            style="background:transparent;color:var(--text2);border:1px solid var(--border);border-radius:8px;padding:10px 16px;font-size:11px;cursor:pointer;font-family:inherit;">
+            Fechar
+          </button>
+        </div>
+      </div>
+
+      <div id="foto-resultado-${moduleId}" style="display:none;margin-top:12px;">
+        <div style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">&#10022; Prompt gerado pela analise da foto</div>
+        <div id="foto-result-box-${moduleId}"
+          style="background:var(--bg2);border-radius:8px;padding:12px;font-size:12px;font-family:monospace;line-height:1.8;color:var(--text);border:1px solid #c9a84c33;min-height:60px;white-space:pre-wrap;word-break:break-word;"></div>
+        <div style="display:flex;gap:8px;margin-top:8px;">
+          <button onclick="aplicarFotoResult('${moduleId}')"
+            style="background:#c9a84c11;color:var(--gold);border:1px solid #c9a84c44;border-radius:8px;padding:8px 16px;font-size:11px;cursor:pointer;font-family:inherit;">
+            &#8593; Aplicar no prompt principal
+          </button>
+          <button onclick="copiarFotoResult('${moduleId}')"
+            style="background:transparent;color:var(--text2);border:1px solid var(--border);border-radius:8px;padding:8px 16px;font-size:11px;cursor:pointer;font-family:inherit;">
+            Copiar
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  resultEl.parentNode.insertBefore(panel, resultEl.nextSibling);
+}
+
+function handleFotoDrop(event, moduleId) {
+  event.preventDefault();
+  document.getElementById('foto-drop-' + moduleId).style.borderColor = '#c9a84c44';
+  const file = event.dataTransfer.files[0];
+  if (file) processarFoto(file, moduleId);
+}
+
+function handleFotoInput(event, moduleId) {
+  const file = event.target.files[0];
+  if (file) processarFoto(file, moduleId);
+}
+
+function processarFoto(file, moduleId) {
+  if (!file.type.startsWith('image/')) { showToast('Selecione apenas imagens!'); return; }
+  if (file.size > 5 * 1024 * 1024) { showToast('Imagem muito grande! Maximo 5MB.'); return; }
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = document.getElementById('foto-img-' + moduleId);
+    img.src = e.target.result;
+    img.dataset.base64 = e.target.result.split(',')[1];
+    img.dataset.type = file.type;
+    document.getElementById('foto-preview-' + moduleId).style.display = 'block';
+    document.getElementById('foto-resultado-' + moduleId).style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+async function analisarFoto(moduleId) {
+  const img = document.getElementById('foto-img-' + moduleId);
+  if (!img || !img.dataset.base64) { showToast('Selecione uma foto primeiro!'); return; }
+
+  const instrucao = document.getElementById('foto-instrucao-' + moduleId).value.trim();
+  const resultArea = document.getElementById('foto-resultado-' + moduleId);
+  const resultBox = document.getElementById('foto-result-box-' + moduleId);
+
+  resultArea.style.display = 'block';
+  resultBox.innerHTML = '<div style="display:flex;align-items:center;gap:8px;color:var(--gold);"><div class="ai-dot"></div><div class="ai-dot"></div><div class="ai-dot"></div><span style="font-size:12px;">Analisando a foto...</span></div>';
+
+  const systemPrompt = `Voce e um especialista em prompts de fotografia de moda para IA generativa.
+Analise a imagem fornecida e gere um prompt tecnico profissional em ingles para recriar ou se inspirar nessa foto.
+
+REGRAS:
+- Retorne APENAS o prompt em ingles, sem explicacoes, sem preamble
+- Inclua: tipo de foto, descricao da roupa, tecido/material aparente, cores, iluminacao, camera sugerida, pose/composicao, mood/estetica
+- Use terminologia tecnica de fotografia de moda profissional
+- O prompt deve ser direto e pronto para uso no Midjourney ou ChatGPT
+- Se houver instrucao adicional do usuario, incorpore ela no prompt`;
+
+  const userContent = [
+    {
+      type: 'image',
+      source: {
+        type: 'base64',
+        media_type: img.dataset.type || 'image/jpeg',
+        data: img.dataset.base64
+      }
+    },
+    {
+      type: 'text',
+      text: instrucao
+        ? `Analise esta foto de referencia de moda e gere um prompt tecnico. Instrucao adicional: ${instrucao}`
+        : 'Analise esta foto de referencia de moda e gere um prompt tecnico profissional para recriar o estilo.'
+    }
+  ];
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userContent }]
+      })
+    });
+
+    if (!response.ok) throw new Error('Erro na API: ' + response.status);
+    const data = await response.json();
+    const prompt = data.content?.find(b => b.type === 'text')?.text?.trim() || '';
+    if (!prompt) throw new Error('Resposta vazia');
+
+    resultBox.innerText = prompt;
+    showToast('✦ Foto analisada com sucesso!');
+  } catch (err) {
+    resultBox.innerHTML = `<span style="color:var(--danger-text);">Erro: ${err.message}</span>`;
+  }
+}
+
+function aplicarFotoResult(moduleId) {
+  const resultBox = document.getElementById('foto-result-box-' + moduleId);
+  const mainResult = document.getElementById(moduleId + '-result');
+  const text = resultBox.innerText.trim();
+  if (!text || text.startsWith('Erro')) { showToast('Sem resultado para aplicar'); return; }
+  if (mainResult) {
+    mainResult.innerText = text;
+    saveHistory('FOTO-' + moduleId, text);
+    showToast('Aplicado no prompt principal!');
+    document.getElementById('foto-ref-' + moduleId).remove();
+  }
+}
+
+function copiarFotoResult(moduleId) {
+  const resultBox = document.getElementById('foto-result-box-' + moduleId);
+  if (!resultBox) return;
+  navigator.clipboard.writeText(resultBox.innerText).then(() => showToast('Copiado!'));
 }
 </script>
 </body>
