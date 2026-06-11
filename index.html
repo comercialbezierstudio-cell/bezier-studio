@@ -276,18 +276,73 @@ textarea{resize:vertical;min-height:48px;line-height:1.6}
             </select></div>
           <div><label class="lbl" style="margin-top:0;">Ângulo DNA</label>
             <select id="m1-dna-angle">
-              <option value="eye-level perspective, straight-on viewpoint, neutral perspective, no dutch angle, natural human eye perspective, controlled editorial geometry, camera positioned around chest level, no perspective exaggeration, luxury editorial alignment">Eye-level — DNA Bezier</option>
-              <option value="slightly below eye level, subtle upward perspective, elongating body proportions">Levemente abaixo — Elongante</option>
-              <option value="shoulder height angle, natural editorial perspective">Altura dos ombros — Natural</option>
-              <option value="low angle, camera looking up, powerful editorial stance">Ângulo baixo — Poderoso</option>
+              <optgroup label="── DNA Bezier ──">
+                <option value="eye-level perspective, straight-on viewpoint, neutral perspective, no dutch angle, natural human eye perspective, controlled editorial geometry, camera positioned around chest level, no perspective exaggeration, luxury editorial alignment">Eye-level — DNA Bezier</option>
+                <option value="slightly below eye level, subtle upward perspective, elongating body proportions">Levemente abaixo — Elongante</option>
+                <option value="shoulder height angle, natural editorial perspective">Altura dos ombros — Natural</option>
+              </optgroup>
+              <optgroup label="── Enquadramento ──">
+                <option value="close up shot, face and upper chest framing, intimate editorial">Fechar-se — Close up</option>
+                <option value="medium close shot, upper body framing, chest to head">Plano médio fechado</option>
+                <option value="medium shot, waist to head framing, standard editorial">Plano médio</option>
+                <option value="full length shot, head to toe, complete outfit view">Foto completa — Full length</option>
+                <option value="wide shot, full body with environment context, open framing">Plano aberto — Wide shot</option>
+              </optgroup>
+              <optgroup label="── Posição da câmera ──">
+                <option value="low angle, camera looking up, powerful editorial stance">Ângulo baixo — Poderoso</option>
+                <option value="high angle shot, camera above eye level looking down">Ângulo Alto</option>
+                <option value="eye line at shoulder height, natural standing perspective">Linha dos olhos na altura dos ombros</option>
+                <option value="low camera position at knee or hip height, elongating perspective">Na altura do joelho / Na altura do quadril</option>
+                <option value="ground level shot, camera at floor level, dramatic low perspective">Nível do solo</option>
+                <option value="aerial view, bird eye view, camera directly above looking down">Vista aérea — Bird eye</option>
+                <option value="top down overhead shot, flat lay perspective, directly above">Vista de cima para baixo — Top down</option>
+              </optgroup>
+              <optgroup label="── Ângulo especial ──">
+                <option value="straight on frontal shot, direct face to camera, symmetrical framing">De frente — Frontal direto</option>
+                <option value="three quarter angle, 45 degree view, classic fashion angle">Três quartos — 3/4</option>
+                <option value="profile shot, side view, 90 degree angle from subject">Perfil — Lateral</option>
+                <option value="over the shoulder shot, subject from behind shoulder angle">Por cima do ombro</option>
+                <option value="reverse angle shot, camera behind subject looking forward">Ângulo Reverso</option>
+                <option value="dutch angle, tilted camera, diagonal dramatic composition">Inclinação holandesa — Dutch angle</option>
+                <option value="POV point of view shot, first person perspective, immersive angle">POV — Ponto de vista</option>
+              </optgroup>
             </select></div>
           <div><label class="lbl" style="margin-top:0;">Câmera DNA</label>
             <select id="m1-dna-camera">
-              <option value="medium format fashion photography look, Hasselblad X2D aesthetic, Phase One editorial rendering, ultra high dynamic range, premium optical rendering, medium format depth compression, fashion campaign sharpness, luxury commercial photography quality">Hasselblad X2D / Phase One — DNA</option>
-              <option value="Phase One IQ4 150MP, medium format, ultra sharp, luxury commercial">Phase One IQ4 150MP</option>
-              <option value="Hasselblad H6D-400c, medium format rendering, premium optical clarity">Hasselblad H6D-400c</option>
-              <option value="ARRI ALEXA 35, cinematic fashion rendering">ARRI ALEXA 35</option>
-              <option value="Sony VENICE 2, high resolution fashion photography">Sony VENICE 2</option>
+              <optgroup label="── DNA Bezier ──">
+                <option value="medium format fashion photography look, Hasselblad X2D aesthetic, Phase One editorial rendering, ultra high dynamic range, premium optical rendering, medium format depth compression, fashion campaign sharpness, luxury commercial photography quality">Hasselblad X2D / Phase One — DNA</option>
+              </optgroup>
+              <optgroup label="── Médio Formato ──">
+                <option value="Phase One IQ4 150MP, medium format, ultra sharp, luxury commercial">Phase One IQ4 150MP</option>
+                <option value="Hasselblad H6D-400c, medium format rendering, premium optical clarity">Hasselblad H6D-400c</option>
+                <option value="Fujifilm GFX 100S, medium format mirrorless, natural color rendering">Fujifilm GFX 100S</option>
+                <option value="Leica S3, medium format, legendary optical quality, pure rendering">Leica S3</option>
+                <option value="IMAX MK IV 65mm, large format cinematic rendering, ultra sharp IMAX quality">IMAX MK IV 65mm</option>
+              </optgroup>
+              <optgroup label="── Cinema ARRI ──">
+                <option value="ARRI ALEXA 35, cinematic fashion rendering">ARRI ALEXA 35</option>
+                <option value="ARRI ALEXA Mini LF, large format cinematic, compact fashion film look">ARRI ALEXA Mini LF</option>
+                <option value="ARRI ALEXA 65, large format ultra cinematic, maximum detail">ARRI ALEXA 65</option>
+                <option value="ARRICAM ST, 35mm film camera, classic cinematic grain, organic film rendering">ARRICAM ST (filme 35mm)</option>
+              </optgroup>
+              <optgroup label="── Cinema Sony / RED ──">
+                <option value="Sony VENICE 2, high resolution fashion photography">Sony VENICE 2</option>
+                <option value="Sony VENICE, full frame cinematic sensor, warm organic rendering">Sony VENEZA</option>
+                <option value="RED V-RAPTOR VV Full Frame, ultra high resolution, clean sharp rendering">RED V-RAPTOR (VV/Full Frame)</option>
+                <option value="RED KOMODO 6K, compact cinema camera, organic filmic rendering">RED KOMODO 6K</option>
+              </optgroup>
+              <optgroup label="── Cinema / Filme 35mm ──">
+                <option value="Panavision Panaflex Platinum, 35mm film, legendary cinematic quality, classic Hollywood rendering">Panavision Panaflex Platinum (filme 35mm)</option>
+                <option value="Canon C500 Mark II, full frame cinema, natural color science">Canon C500 Mark II</option>
+                <option value="Blackmagic URSA Mini Pro 12K, ultra high resolution, raw cinematic quality">Blackmagic URSA Mini Pro 12K</option>
+                <option value="Phantom Flex4K, ultra slow motion capable, extreme detail capture">Phantom Flex4K</option>
+              </optgroup>
+              <optgroup label="── Full Frame Profissional ──">
+                <option value="Sony A7R V, full frame mirrorless, ultra high resolution">Sony A7R V</option>
+                <option value="Canon EOS R5, full frame mirrorless, high resolution fashion">Canon EOS R5</option>
+                <option value="Nikon Z9, professional full frame, sharp clean rendering">Nikon Z9</option>
+                <option value="Leica M11, rangefinder full frame, classic Leica rendering, pure optical quality">Leica M11</option>
+              </optgroup>
             </select></div>
         </div>
 
@@ -295,18 +350,61 @@ textarea{resize:vertical;min-height:48px;line-height:1.6}
         <div class="grid3">
           <div><label class="lbl" style="margin-top:0;">Lente DNA</label>
             <select id="m1-dna-lens">
-              <option value="50mm lens equivalent, 65mm medium format look, medium telephoto compression, natural body proportions, low distortion optics, premium prime lens rendering, editorial portrait focal length, subtle perspective compression, realistic vertical geometry">50-65mm — DNA Bezier natural</option>
-              <option value="85mm portrait lens, natural compression, editorial fashion focal length">85mm — Retrato editorial</option>
-              <option value="medium format 80mm equivalent, balanced compression, luxury fashion rendering">80mm médio formato</option>
-              <option value="Canon K35 vintage lens, organic rendering, subtle character">Canon K35 — Vintage orgânico</option>
-              <option value="ZEISS Supreme Prime Radiance, modern sharp luxury rendering">ZEISS Supreme Prime</option>
+              <optgroup label="── DNA Bezier ──">
+                <option value="50mm lens equivalent, 65mm medium format look, medium telephoto compression, natural body proportions, low distortion optics, premium prime lens rendering, editorial portrait focal length, subtle perspective compression, realistic vertical geometry">50-65mm — DNA Bezier natural</option>
+              </optgroup>
+              <optgroup label="── Retrato &amp; Moda ──">
+                <option value="85mm portrait lens, natural compression, editorial fashion focal length">85mm — Retrato editorial</option>
+                <option value="medium format 80mm equivalent, balanced compression, luxury fashion rendering">80mm — Médio formato</option>
+                <option value="105mm f/1.4 portrait lens, strong compression, ultra smooth bokeh">105mm f/1.4 — Compressão suave</option>
+                <option value="135mm f/1.8 portrait lens, intense bokeh, cinematic compression">135mm f/1.8 — Bokeh intenso</option>
+                <option value="200mm f/2 telephoto, cinematic compression, extreme subject isolation">200mm f/2 — Compressão cinemática</option>
+              </optgroup>
+              <optgroup label="── Grande Angular ──">
+                <option value="35mm f/1.4 wide lens, environmental editorial, natural perspective">35mm f/1.4 — Ambiental</option>
+                <option value="24mm f/1.8 wide angle, editorial broad perspective, environmental storytelling">24mm f/1.8 — Editorial largo</option>
+              </optgroup>
+              <optgroup label="── Macro &amp; Detalhe ──">
+                <option value="100mm macro lens, extreme close up detail, fabric texture capture">100mm Macro — Detalhe extremo</option>
+                <option value="tilt-shift 90mm lens, selective focus, architectural perspective control">Tilt-shift 90mm — Perspectiva controlada</option>
+              </optgroup>
+              <optgroup label="── Lentes Premium ──">
+                <option value="ZEISS Supreme Prime Radiance, modern sharp luxury rendering">ZEISS Supreme Prime</option>
+                <option value="ZEISS Supreme Prime Radiance lens, modern ultra sharp, subtle lens flare, luxury rendering">Radiância Suprema Prime ZEISS</option>
+                <option value="ARRI Signature Prime lens, cinematic rendering, natural organic sharpness, film-like quality">Linhas Prime ARRI Signature</option>
+                <option value="Leica Thalia lens, large format prime, organic rendering, Leica optical character">Leica Thalia</option>
+              </optgroup>
+              <optgroup label="── Anamórficas ──">
+                <option value="Panavision Serie C anamorphic lens, oval bokeh, cinematic lens flare, widescreen character">Panavision Série C (anamórfica)</option>
+                <option value="Panavision Serie E anamorphic lens, classic cinema anamorphic rendering, oval bokeh">Série E da Panavision (anamórfica)</option>
+                <option value="LOMO anamorphic vintage lens, oval bokeh, vintage cinematic character, unique flare">LOMO Anamórfico (vintage)</option>
+              </optgroup>
+              <optgroup label="── Vintage &amp; Clássicas ──">
+                <option value="Canon K35 vintage lens, organic rendering, subtle character">Canon K35 — Vintage orgânico</option>
+                <option value="Cooke Speed Panchro vintage lens, warm organic rendering, classic film character">Cooke Speed Panchro (vintage)</option>
+                <option value="Cooke Panchro i Classic FF, full frame vintage rendering, soft organic character">Cooke Panchro/i Classic FF</option>
+                <option value="Helios 44-2 58mm vintage Soviet lens, swirly bokeh, organic vintage rendering">Helios 44-2 58mm (vintage)</option>
+              </optgroup>
             </select></div>
           <div><label class="lbl" style="margin-top:0;">Configuração DNA</label>
             <select id="m1-dna-settings">
-              <option value="f/8 aperture, ISO 100, studio sync shutter speed, ultra sharp image rendering, high depth of field, full body sharpness, noise-free image quality, maximum fabric detail retention, clean tonal rendering, commercial studio exposure">f/8 ISO 100 — DNA Tudo nítido</option>
-              <option value="f/5.6, ISO 100, sharp focus, balanced depth of field, fashion editorial exposure">f/5.6 — Levemente separado</option>
-              <option value="f/4, ISO 100, shallow depth of field, subject separation, editorial bokeh">f/4 — Separação sutil</option>
-              <option value="f/11, ISO 100, maximum sharpness, catalog photography, everything in focus">f/11 — Máxima nitidez catálogo</option>
+              <optgroup label="── DNA Bezier ──">
+                <option value="f/8 aperture, ISO 100, studio sync shutter speed, ultra sharp image rendering, high depth of field, full body sharpness, noise-free image quality, maximum fabric detail retention, clean tonal rendering, commercial studio exposure">f/8 ISO 100 — DNA Tudo nítido</option>
+              </optgroup>
+              <optgroup label="── Bokeh &amp; Desfoque ──">
+                <option value="f/1.2 aperture, extreme bokeh, ultra thin focus plane, dreamy rendering">f/1.2 — Desfoque extremo</option>
+                <option value="f/1.4 aperture, ultra shallow depth of field, maximum subject separation, dreamy bokeh">f/1.4 — Bokeh máximo</option>
+                <option value="f/2.0 aperture, luminous and sharp, balanced bokeh, editorial quality">f/2.0 — Luminoso equilibrado</option>
+                <option value="f/2.8 aperture, shallow depth of field, professional portrait separation">f/2.8 — Separação profissional</option>
+              </optgroup>
+              <optgroup label="── Equilibrado ──">
+                <option value="f/4, ISO 100, shallow depth of field, subject separation, editorial bokeh">f/4 — Separação sutil</option>
+                <option value="f/5.6, ISO 100, sharp focus, balanced depth of field, fashion editorial exposure">f/5.6 — Levemente separado</option>
+              </optgroup>
+              <optgroup label="── Tudo Nítido ──">
+                <option value="f/11, ISO 100, maximum sharpness, catalog photography, everything in focus">f/11 — Máxima nitidez catálogo</option>
+                <option value="f/16 aperture, maximum depth of field, everything sharp, product catalog">f/16 — Tudo nítido máximo</option>
+              </optgroup>
             </select></div>
           <div><label class="lbl" style="margin-top:0;">Qualidade óptica</label>
             <select id="m1-dna-quality">
@@ -321,24 +419,48 @@ textarea{resize:vertical;min-height:48px;line-height:1.6}
         <div class="grid3">
           <div><label class="lbl" style="margin-top:0;">Sistema de luz</label>
             <select id="m1-dna-light">
-              <option value="soft diffused studio lighting, large softbox lighting, ultra soft shadows, low contrast lighting, overcast daylight simulation, Scandinavian soft lighting, smooth tonal transitions, subtle shadow gradients, feathered light falloff, shadowless fashion lighting, controlled studio illumination, soft frontal lighting, gentle edge shadows, clean editorial light setup">DNA Bezier — Escandinavo suave</option>
-              <option value="natural daylight from large left side window, directional soft natural light, moderate side shadow on right body, cool 6000-6500K natural daylight, no artificial fill light, preserved natural shadows, authentic daylight fashion photography, Zara studio natural light">Luz natural lateral — Zara Foto 1</option>
-              <option value="large front softbox with lateral fill, medium contrast studio lighting, defined soft shadows on background wall, cool 6000K+ temperature, swimwear campaign lighting, bright even illumination with body separation">Softbox frontal + fill — Zara swimwear</option>
-              <option value="natural diffused urban exterior light, overcast or urban shadow, neutral 5500K, no directional shadow, soft wrapping ambient light, street lifestyle illumination">Luz exterior difusa — Zara urbana</option>
-              <option value="outdoor mediterranean sunlight, bright filtered sun, warm 5800K, soft shadows on tile floor, subtle rim light from sea reflection, coastal luxury natural light, sunny day with soft diffusion">Luz solar mediterrânea — Zara Foto 3</option>
-              <option value="natural window light left side, soft ambient fill from white walls, neutral 5500K, very soft shadows, lifestyle apartment natural light, authentic interior daylight">Luz janela lateral suave — Zara Foto 4</option>
-              <option value="soft diffused natural daylight, overcast window light, warm ambient fill, neutral to warm 5500K, low contrast flat natural light, no directional shadows, organic lifestyle illumination, soft ambient wrap light">Luz natural difusa — Zara Foto 2</option>
-              <option value="main light slightly camera left, large overhead diffusion source, subtle side shadow on wall, low intensity shadow casting, ultra broad light source, high diffusion ratio, soft ambient fill, controlled highlight rolloff, matte skin rendering, low specular highlights">Direcional suave — Sombra lateral leve</option>
-              <option value="museum lighting, luxury retail lighting, Scandinavian editorial lighting, COS campaign lighting, quiet luxury illumination, not glam lighting, not harsh beauty lighting">Museum / Luxury Retail — COS</option>
-              <option value="high key bright clean lighting, minimal shadows, fresh commercial look">High key — Clean comercial</option>
-              <option value="natural soft window light, diffused indoor, Scandinavian daylight simulation">Luz natural — Janela escandinava</option>
-              <option value="golden hour warm soft directional sunlight, outdoor warmth">Hora dourada</option>
-              <option value="low key dramatic lighting, deep shadows, moody cinematic atmosphere">Low key — Dramático</option>
-              <option value="backlit silhouette, strong rim light, contre-jour cinematic">Contraluz — Rim light</option>
-              <option value="chiaroscuro lighting, extreme contrast light and shadow">Chiaroscuro</option>
-              <option value="blue hour cool twilight soft light">Hora azul</option>
-              <option value="neon colored accent lights, urban night atmosphere">Neon — Urbano noturno</option>
-              <option value="beauty dish butterfly lighting, classic fashion portrait">Beauty dish — Butterfly</option>
+              <optgroup label="── DNA Bezier ──">
+                <option value="soft diffused studio lighting, large softbox lighting, ultra soft shadows, low contrast lighting, overcast daylight simulation, Scandinavian soft lighting, smooth tonal transitions, subtle shadow gradients, feathered light falloff, shadowless fashion lighting, controlled studio illumination, soft frontal lighting, gentle edge shadows, clean editorial light setup">DNA Bezier — Escandinavo suave</option>
+                <option value="museum lighting, luxury retail lighting, Scandinavian editorial lighting, COS campaign lighting, quiet luxury illumination, not glam lighting, not harsh beauty lighting">Museum / Luxury Retail — COS</option>
+              </optgroup>
+              <optgroup label="── Luz Natural ──">
+                <option value="natural daylight from large left side window, directional soft natural light, moderate side shadow on right body, cool 6000-6500K natural daylight, no artificial fill light, preserved natural shadows, authentic daylight fashion photography, Zara studio natural light">Luz natural lateral — Zara Foto 1</option>
+                <option value="soft diffused natural daylight, overcast window light, warm ambient fill, neutral to warm 5500K, low contrast flat natural light, no directional shadows, organic lifestyle illumination, soft ambient wrap light">Luz natural difusa — Zara Foto 2</option>
+                <option value="outdoor mediterranean sunlight, bright filtered sun, warm 5800K, soft shadows on tile floor, subtle rim light from sea reflection, coastal luxury natural light, sunny day with soft diffusion">Luz solar mediterrânea — Zara Foto 3</option>
+                <option value="natural window light left side, soft ambient fill from white walls, neutral 5500K, very soft shadows, lifestyle apartment natural light, authentic interior daylight">Luz janela lateral suave — Zara Foto 4</option>
+                <option value="natural diffused urban exterior light, overcast or urban shadow, neutral 5500K, no directional shadow, soft wrapping ambient light, street lifestyle illumination">Luz exterior difusa — Zara urbana</option>
+                <option value="natural soft window light, diffused indoor, Scandinavian daylight simulation">Luz janela — Escandinava</option>
+                <option value="natural ambient light, organic daylight, no artificial lighting, authentic natural look">Luz Natural — Ambiente orgânico</option>
+                <option value="dawn light, soft cool morning light, first light of day, gentle warm dawn glow">Luz de Amanhecer — Aurora</option>
+                <option value="golden hour warm soft directional sunlight, outdoor warmth">Hora Dourada — Golden hour</option>
+                <option value="blue hour cool twilight soft light">Hora Azul — Blue hour</option>
+              </optgroup>
+              <optgroup label="── Estúdio ──">
+                <option value="large front softbox with lateral fill, medium contrast studio lighting, defined soft shadows on background wall, cool 6000K+ temperature, swimwear campaign lighting, bright even illumination with body separation">Softbox frontal + fill — Zara swimwear</option>
+                <option value="main light slightly camera left, large overhead diffusion source, subtle side shadow on wall, low intensity shadow casting, ultra broad light source, high diffusion ratio, soft ambient fill, controlled highlight rolloff, matte skin rendering, low specular highlights">Direcional suave — Sombra lateral leve</option>
+                <option value="high key bright clean lighting, minimal shadows, fresh commercial look">High key — Clean comercial</option>
+                <option value="discreet subtle lighting, low intensity, soft ambient, understated illumination">Discreto — Sutil</option>
+                <option value="diffused soft light, large light source, wrapped soft illumination, no harsh shadows">Luz Difusa — Suave ampla</option>
+                <option value="beauty dish butterfly lighting, classic fashion portrait">Beauty dish — Butterfly</option>
+                <option value="ring light, circular catchlight in eyes, frontal even illumination, beauty lighting">Ring light — Beauty frontal</option>
+                <option value="split lighting, half face illuminated half in shadow, dramatic portrait lighting">Split light — Metade iluminado</option>
+                <option value="strobe flash lighting, frozen motion, clean commercial flash, studio strobe">Strobe — Flash estúdio</option>
+              </optgroup>
+              <optgroup label="── Dramático &amp; Especial ──">
+                <option value="low key dramatic lighting, deep shadows, moody cinematic atmosphere">Low key — Dramático</option>
+                <option value="hard direct light, sharp defined shadows, strong contrast, dramatic harsh sun">Luz Dura — Contraste forte</option>
+                <option value="chiaroscuro lighting, extreme contrast light and shadow">Chiaroscuro</option>
+                <option value="chiaroscuro extreme contrast, deep blacks, bright highlights, dramatic shadow play">Claro-escuro — Chiaroscuro dramático</option>
+                <option value="backlit silhouette, strong rim light, contre-jour cinematic">Contraluz — Rim light</option>
+                <option value="backlight contre-jour, rim light silhouette, light source behind subject">Contraluz — Contre-jour</option>
+                <option value="volumetric light, visible light rays through atmosphere, cinematic god rays">Volumétrico — Raios de luz</option>
+                <option value="alto tom, high tonal values, bright airy look">Alto tom — High tone</option>
+              </optgroup>
+              <optgroup label="── Especial &amp; Criativo ──">
+                <option value="neon colored accent lights, urban night atmosphere">Neon — Urbano noturno</option>
+                <option value="neon colored lights, vibrant artificial colored illumination, urban night neon glow">Neon — Colorido urbano</option>
+                <option value="candlelight warm intimate glow, flickering warm orange tones, intimate mood">Luz de vela — Íntimo quente</option>
+              </optgroup>
             </select></div>
           <div><label class="lbl" style="margin-top:0;">Color grading DNA</label>
             <select id="m1-dna-grade">
